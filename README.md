@@ -1,9 +1,42 @@
 # 🚀 Git & GitHub – Complete Notes (CS50 + PPT)
 
-This repository contains my **complete notes and practice on Git & GitHub**, based strictly on:
+This repository contains my **complete notes and hands-on practice on Git & GitHub**, based strictly on:
 
 * CS50 Web Programming (Harvard)
 * Git Learning PPT (Beginner → Advanced)
+
+---
+
+# 📌 Repository Structure
+
+This repo is organized into clear sections for better learning:
+
+```bash
+git-github-notes/
+│
+├── basics/            # Core concepts and commands
+│   └── README.md
+│
+├── branching/         # Branching, merging, conflicts
+│   └── README.md
+│
+├── practice/          # Real workflows + hands-on usage
+│   ├── README.md
+│   └── git-flow.md    # Step-by-step command flow
+│
+└── README.md          # Main overview (this file)
+```
+
+---
+
+# 📚 Navigate Sections
+
+👉 Start learning from here:
+
+* 📘 [Basics](basics/README.md) → Fundamental Git concepts
+* 🌿 [Branching](branching/README.md) → Deep understanding of branches & merge
+* 💻 [Practice](practice/README.md) → Real-world workflows
+* ⚡ [Git Flow Reference](practice/git-flow.md) → Quick command guide
 
 ---
 
@@ -21,7 +54,7 @@ Git is a **distributed version control system** that helps:
 * Keep track of changes over time
 * Synchronize code between different users
 * Work on different branches without affecting main code
-* Restore earlier versions if needed 
+* Restore earlier versions if needed
 
 ---
 
@@ -34,19 +67,19 @@ GitHub is a platform that:
 * Allows pushing and pulling code
 
 👉 A repository is:
-A folder that contains all files of a project (local or remote) 
+A folder that contains all files of a project (local or remote)
 
 ---
 
 # ⚙️ 3. Git Workflow
 
-```bash id="c4d0m3"
+```bash
 Working Directory → Staging Area → Repository
 ```
 
 ## Commands:
 
-```bash id="f3s8m0"
+```bash
 git add <file>
 git commit -m "message"
 git push origin <branch>
@@ -58,32 +91,32 @@ git push origin <branch>
 
 ## Initialize Repository
 
-```bash id="psr3e1"
+```bash
 git init
 ```
 
 ## Add Files
 
-```bash id="8v06kj"
+```bash
 git add <file_name>
 git add .
 ```
 
 ## Commit Changes
 
-```bash id="8a8rmh"
+```bash
 git commit -m "initial commit"
 ```
 
 ## Check Status
 
-```bash id="0b3q3x"
+```bash
 git status
 ```
 
 ## View History
 
-```bash id="ghw0rf"
+```bash
 git log
 ```
 
@@ -93,23 +126,23 @@ git log
 
 ## Clone Repository
 
-```bash id="m6m2we"
+```bash
 git clone <repository_url>
 ```
 
 ## Push Changes
 
-```bash id="8t3csh"
+```bash
 git push origin <branch_name>
 ```
 
 ## Pull Changes
 
-```bash id="s9sz1y"
+```bash
 git pull origin <branch_name>
 ```
 
-👉 Used to sync between local and remote repositories 
+👉 Used to sync between local and remote repositories
 
 ---
 
@@ -117,35 +150,35 @@ git pull origin <branch_name>
 
 ## Create Branch
 
-```bash id="dcnwzm"
+```bash
 git branch <branch_name>
 ```
 
 ## Switch Branch
 
-```bash id="r6bm2y"
+```bash
 git checkout <branch_name>
 ```
 
 ## Create & Switch
 
-```bash id="2lfmyd"
+```bash
 git checkout -b <branch_name>
 ```
 
 ## Merge Branch
 
-```bash id="d3h3q7"
+```bash
 git merge <branch_name>
 ```
 
 ## Delete Branch
 
-```bash id="9t6xcl"
+```bash
 git branch -d <branch_name>
 ```
 
-👉 Branching allows working on new features without affecting main code 
+👉 Branching allows working on new features without affecting main code
 
 ---
 
@@ -157,12 +190,12 @@ Occurs when:
 
 ## Resolution:
 
-```bash id="2e7h3g"
+```bash
 git add <resolved_file>
 git commit -m "Resolved conflict"
 ```
 
-👉 Must be resolved manually 
+👉 Must be resolved manually
 
 ---
 
@@ -170,19 +203,19 @@ git commit -m "Resolved conflict"
 
 ## Undo Last Commit (keep changes)
 
-```bash id="dx1b0x"
+```bash
 git reset --soft HEAD~1
 ```
 
 ## Undo Last Commit (delete changes)
 
-```bash id="7ix3u7"
+```bash
 git reset --hard HEAD~1
 ```
 
 ## Discard Changes
 
-```bash id="6umz4j"
+```bash
 git checkout -- <file_name>
 ```
 
@@ -192,33 +225,33 @@ git checkout -- <file_name>
 
 ## Stash Changes
 
-```bash id="l4u6m3"
+```bash
 git stash
 git stash pop
 ```
 
 ## Rebase
 
-```bash id="0g9gkq"
+```bash
 git rebase main
 ```
 
 ## Cherry Pick
 
-```bash id="q2hkgv"
+```bash
 git cherry-pick <commit_hash>
 ```
 
 ## Tagging
 
-```bash id="5m6h7z"
+```bash
 git tag -a v1.0 -m "version 1.0"
 git push --tags
 ```
 
 ## Amend Commit
 
-```bash id="1c3e6h"
+```bash
 git commit --amend -m "new message"
 ```
 
@@ -228,13 +261,13 @@ git commit --amend -m "new message"
 
 ## Remove untracked files
 
-```bash id="1g1y7c"
+```bash
 git clean -f
 ```
 
 ## Remove directories
 
-```bash id="h9h1bz"
+```bash
 git clean -fd
 ```
 
@@ -245,7 +278,7 @@ git clean -fd
 * Write meaningful commit messages
 * Commit frequently
 * Keep branches small
-* Sync regularly with main branch 
+* Sync regularly with main branch
 
 ---
 
@@ -253,20 +286,20 @@ git clean -fd
 
 ## Interactive Rebase
 
-```bash id="8fdwz8"
+```bash
 git rebase -i HEAD~3
 ```
 
 ## Submodules
 
-```bash id="t9z5sj"
+```bash
 git submodule add <repo_url>
 git submodule update --init --recursive
 ```
 
 ## Bisect
 
-```bash id="8l2kfx"
+```bash
 git bisect start
 git bisect bad
 git bisect good <commit_hash>
@@ -274,7 +307,7 @@ git bisect good <commit_hash>
 
 ## Aliases
 
-```bash id="g9z5z9"
+```bash
 git config --global alias.st status
 ```
 
@@ -282,4 +315,8 @@ git config --global alias.st status
 
 # 💼 Author
 
-Pujitha Reddy
+**Pujitha Reddy**
+
+---
+
+⭐ This repository is structured for **step-by-step learning + real-world practice**
