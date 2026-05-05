@@ -27,6 +27,8 @@ cd <repository_name>
 
 ```bash
 git init
+git remote add origin <repository_url>   # connect to GitHub
+git remote -v                            # verify remote
 ```
 
 ---
@@ -64,7 +66,7 @@ git commit -am "message"   # shortcut (tracked files only)
 git push -u origin main
 ```
 
-👉 After this, you can just use:
+👉 After this:
 
 ```bash
 git push
@@ -96,7 +98,7 @@ git commit -m "updated code"
 git push
 ```
 
-👉 Always follow:
+👉 Rule:
 👉 **pull → work → add → commit → push**
 
 ---
@@ -125,7 +127,6 @@ git push origin feature1
 ```bash
 git checkout main
 git pull
-
 git merge feature1
 ```
 
@@ -147,6 +148,7 @@ git commit -m "resolved conflict"
 ```bash
 git log
 git log --oneline
+git log --oneline --graph   # visual history 🔥
 ```
 
 ---
@@ -154,9 +156,9 @@ git log --oneline
 # 📌 13. WORKING WITH REMOTE
 
 ```bash
-git fetch              # download only
-git pull               # download + merge
-git push               # upload
+git fetch origin      # download only
+git pull              # download + merge
+git push              # upload
 ```
 
 ---
@@ -236,6 +238,35 @@ git push
 
 ---
 
+# 📌 19. EXTRA IMPORTANT COMMANDS (🔥 ADDED)
+
+## Delete branch after merge
+
+```bash
+git branch -d feature1
+```
+
+## Restore file changes
+
+```bash
+git restore file.txt
+git restore --staged file.txt
+```
+
+## .gitignore (ignore files)
+
+```bash
+touch .gitignore
+```
+
+👉 Used to ignore:
+
+* node_modules
+* temp files
+* secrets
+
+---
+
 # 🎯 FINAL RULE (IMPORTANT)
 
 ```bash
@@ -253,6 +284,7 @@ git pull → work → git add → git commit → git push
 * git merge → combine
 * git diff → check changes
 * git branch → view branches
+* git remote → connect repo
 
 ---
 
