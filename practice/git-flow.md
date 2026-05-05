@@ -1,291 +1,317 @@
-# 🚀 Git Command Flow (Step-by-Step Reference)
+# 💻 Git Practice – Real Workflow & Commands
 
-This is a **complete Git workflow** from project start → collaboration → advanced usage.
+This section focuses on **practical usage of Git commands and real-world workflows**, based on:
 
----
+* CS50 Web Programming (Harvard)
+* Git Learning PPT
+* Hands-on practice
 
-# 📌 1. FIRST TIME SETUP (One-time only)
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your@email.com"
-git --version
-```
+Unlike theoretical sections, this part demonstrates **how Git is actually used in day-to-day development**.
 
 ---
 
-# 📌 2. CREATE OR CLONE REPOSITORY
+# 📌 1. Clone Repository (Starting a Project)
 
-## 🔹 Option A: Clone existing repo
-
-```bash
+```bash id="d2a9c1"
 git clone <repository_url>
 cd <repository_name>
 ```
 
-## 🔹 Option B: Create new repo
+Cloning creates a **local copy of a remote repository**, including all files and commit history.
 
-```bash
-git init
-git remote add origin <repository_url>   # connect to GitHub
-git remote -v                            # verify remote
-```
+👉 After cloning:
 
----
-
-# 📌 3. CHECK STATUS & DIFFERENCES
-
-```bash
-git status              # current state
-git diff                # show changes before commit
-```
+* You are connected to the remote repository
+* You can start working immediately
 
 ---
 
-# 📌 4. ADD FILES (STAGING)
+# 📌 2. Creating and Modifying Files
 
-```bash
-git add file.txt        # add specific file
-git add .               # add all files
+```bash id="f8b2m6"
+touch file.txt
 ```
+
+Creates a new file. Git does not track changes automatically—you must explicitly add them.
+
+👉 This represents the **working directory stage**, where development happens.
 
 ---
 
-# 📌 5. COMMIT CHANGES
+# 📌 3. Checking Repository Status
 
-```bash
-git commit -m "message"
-git commit -am "message"   # shortcut (tracked files only)
+```bash id="p4k9x7"
+git status
 ```
+
+Shows the current state of your project:
+
+* Untracked files
+* Modified files
+* Staged files
+
+👉 Always run this before committing to avoid mistakes.
 
 ---
 
-# 📌 6. FIRST PUSH (SET UPSTREAM)
+# 📌 4. Adding Files to Staging
 
-```bash
+```bash id="z6y3q8"
+git add file.txt
+git add .
+```
+
+Moves changes to the **staging area**.
+
+* Specific file → `git add file.txt`
+* All files → `git add .`
+
+👉 Staging allows you to control what goes into the next commit.
+
+---
+
+# 📌 5. Committing Changes
+
+```bash id="x1c7r5"
+git commit -m "Added file"
+```
+
+Creates a **snapshot of your project**.
+
+👉 Good commit messages:
+
+* Clearly describe the change
+* Make history easy to understand
+
+---
+
+# 📌 6. Pushing to GitHub
+
+```bash id="v9t2n3"
+git push origin main
+```
+
+Uploads your changes to GitHub.
+
+👉 **Pro Tip:**
+
+```bash id="z4j9c2"
 git push -u origin main
 ```
 
-👉 After this:
+* Sets upstream branch
+* After this → simply use:
 
-```bash
+```bash id="j3x7k1"
 git push
 ```
 
 ---
 
-# 📌 7. BASIC WORKFLOW (MOST USED 🔥)
+# 📌 7. Pulling Latest Changes
 
-```bash
-git status
+```bash id="q3p8m4"
+git pull origin main
+```
+
+Downloads and merges updates from GitHub.
+
+👉 Always pull before starting work to avoid conflicts.
+
+---
+
+# 📌 8. Full Beginner Workflow
+
+```bash id="n7k2v1"
+git clone <repo>
+cd repo
+
+touch file.txt
+
 git add .
-git commit -m "message"
-git push
+git commit -m "First commit"
+
+git push origin main
 ```
+
+👉 Flow:
+Create → Add → Commit → Push
 
 ---
 
-# 📌 8. DAILY WORKFLOW (IMPORTANT)
+# 📌 9. Branch Workflow (Real Development)
 
-```bash
-git pull                # get latest changes
+```bash id="h5x9c2"
+git checkout -b feature1
 
 # make changes
 
 git add .
-git commit -m "updated code"
+git commit -m "Feature added"
 
-git push
+git push -u origin feature1
 ```
 
-👉 Rule:
-👉 **pull → work → add → commit → push**
-
----
-
-# 📌 9. BRANCH WORKFLOW (REAL DEVELOPMENT)
-
-```bash
-git branch                  # view branches
-git checkout -b feature1   # create branch
-git checkout main          # switch branch
-```
-
-```bash
-# make changes
-
-git add .
-git commit -m "feature added"
-
-git push origin feature1
-```
-
----
-
-# 📌 10. MERGE WORKFLOW
-
-```bash
+```bash id="k8d2m7"
 git checkout main
 git pull
 git merge feature1
 ```
 
+👉 Features should always be developed in separate branches.
+
 ---
 
-# 📌 11. MERGE CONFLICT RESOLUTION
+# 📌 10. Merge Conflict Practice
 
-```bash
-# fix file manually
+```bash id="r4m8z6"
+git pull
+```
 
-git add <file>
-git commit -m "resolved conflict"
+If a conflict occurs:
+
+* Git marks conflicting sections in the file
+* You must resolve them manually
+
+```bash id="k2w7q3"
+git add file.txt
+git commit -m "Resolved conflict"
 ```
 
 ---
 
-# 📌 12. VIEW HISTORY
+# 📌 11. Reset Practice (Undo Changes)
 
-```bash
-git log
-git log --oneline
-git log --oneline --graph   # visual history 🔥
-```
+## Soft Reset
 
----
-
-# 📌 13. WORKING WITH REMOTE
-
-```bash
-git fetch origin      # download only
-git pull              # download + merge
-git push              # upload
-```
-
----
-
-# 📌 14. UNDO CHANGES
-
-## Undo last commit (keep changes)
-
-```bash
+```bash id="c8p1v9"
 git reset --soft HEAD~1
 ```
 
-## Undo last commit (delete changes)
+* Removes last commit
+* Keeps changes in staging
 
-```bash
+## Hard Reset
+
+```bash id="b6x4m2"
 git reset --hard HEAD~1
 ```
 
-## Reset to remote version
+* Deletes commit and changes completely
 
-```bash
-git reset --hard origin/main
-```
+⚠️ Use `--hard` carefully — it permanently deletes work.
 
 ---
 
-# 📌 15. STASH (TEMP SAVE WORK)
+# 📌 12. Viewing History
 
-```bash
+```bash id="t9f2k8"
+git log
+git log --oneline
+git log --oneline --graph --all
+```
+
+👉 Shows:
+
+* Commit history
+* Branch structure
+* Merge relationships
+
+---
+
+# 📌 13. Comparing Changes
+
+```bash id="j3k6m7"
+git diff              # unstaged changes
+git diff --staged     # staged changes
+```
+
+👉 Helps verify changes before committing.
+
+---
+
+# 📌 14. Stash (Temporary Storage)
+
+```bash id="u7p3n1"
 git stash
 git stash pop
 ```
 
+Temporarily saves uncommitted changes.
+
+👉 Useful when:
+
+* Switching branches
+* Handling urgent tasks
+
 ---
 
-# 📌 16. CLEAN REPOSITORY
+# 📌 15. Cleaning Untracked Files
 
-```bash
+```bash id="l4w2x6"
 git clean -f
-git clean -fd
 ```
+
+Removes untracked files.
+
+⚠️ This cannot be undone — use carefully.
 
 ---
 
-# 📌 17. ADVANCED COMMANDS
+# 📌 16. Real Developer Workflow (IMPORTANT)
 
-```bash
-git rebase main
-git cherry-pick <commit>
-git tag -a v1.0 -m "version"
-git push --tags
-```
+```bash id="e2y8n4"
+git pull
 
----
-
-# 📌 18. COMPLETE REAL WORKFLOW (FINAL)
-
-```bash
-git clone <repo>
-cd repo
-
-git checkout -b feature
-
-# work
+# make changes
 
 git add .
-git commit -m "feature added"
-
-git push origin feature
-
-git checkout main
-git pull
-git merge feature
+git commit -m "Updated feature"
 
 git push
 ```
 
----
-
-# 📌 19. EXTRA IMPORTANT COMMANDS (🔥 ADDED)
-
-## Delete branch after merge
-
-```bash
-git branch -d feature1
-```
-
-## Restore file changes
-
-```bash
-git restore file.txt
-git restore --staged file.txt
-```
-
-## .gitignore (ignore files)
-
-```bash
-touch .gitignore
-```
-
-👉 Used to ignore:
-
-* node_modules
-* temp files
-* secrets
+👉 Golden rule:
+👉 **pull → work → add → commit → push**
 
 ---
 
-# 🎯 FINAL RULE (IMPORTANT)
+# 📌 17. Amend Commit (Fix Last Commit)
 
-```bash
-git pull → work → git add → git commit → git push
+```bash id="p9x4v2"
+git commit --amend -m "Updated message"
 ```
 
----
+👉 Use when:
 
-# 💡 SUMMARY
+* You forgot to include a file
+* You want to fix the commit message
 
-* git add → stage
-* git commit → save
-* git push → upload
-* git pull → sync
-* git merge → combine
-* git diff → check changes
-* git branch → view branches
-* git remote → connect repo
+⚠️ Avoid using after pushing (rewrites history).
 
 ---
 
-⭐ This file is your **daily Git reference**
+# 📌 18. Common Mistakes
+
+* Forgetting `git add`
+* Not pulling before pushing
+* Using `git reset --hard` carelessly
+* Ignoring `git status`
+
+👉 These mistakes can lead to conflicts or data loss.
+
+---
+
+# 🎯 Conclusion
+
+This section demonstrates:
+
+* Real Git usage
+* Practical workflows
+* Command execution in real scenarios
+
+👉 Mastering this ensures you are ready for:
+
+* Real-world development
+* Team collaboration
+* Technical interviews
