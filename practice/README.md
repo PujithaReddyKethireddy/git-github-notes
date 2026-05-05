@@ -3,7 +3,7 @@
 This section contains **practical Git workflows and real command usage**, based on:
 
 * CS50 Web Programming (Harvard)
-* Git Learning PPT
+* Git Learning
 
 ---
 
