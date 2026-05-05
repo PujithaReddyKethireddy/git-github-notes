@@ -1,324 +1,285 @@
-# 🚀 Git & GitHub – Complete Guide (CS50 + W3Schools + Practice)
+# 🚀 Git & GitHub – Complete Notes (CS50 + PPT)
 
-This repository contains my **complete understanding of Git & GitHub**, built from:
+This repository contains my **complete notes and practice on Git & GitHub**, based strictly on:
 
-* 📘 CS50 Web Programming (Harvard)
-* 🌐 W3Schools Git Tutorial
-* 💻 Hands-on terminal practice
+* CS50 Web Programming (Harvard)
+* Git Learning PPT (Beginner → Advanced)
 
 ---
 
 # 📌 1. What is Git?
 
-Git is a **Version Control System (VCS)** used to:
+Git is a **distributed version control system** that helps:
 
 * Track changes in code
-* Save **snapshots (commits)** of projects
+* Save snapshots of projects
 * Collaborate with multiple developers
-* Restore previous versions anytime
+* Revert to previous versions
 
-👉 Instead of saving multiple files manually:
+👉 Git allows us to:
 
-```
-file_v1 → file_v2 → file_final
-```
-
-Git stores:
-👉 **Snapshots of your project over time**
-
-📖 From CS50:
-Git allows us to **track changes, revert versions, and collaborate efficiently** 
+* Keep track of changes over time
+* Synchronize code between different users
+* Work on different branches without affecting main code
+* Restore earlier versions if needed 
 
 ---
 
 # 🌐 2. What is GitHub?
 
-GitHub is a **cloud platform** to store Git repositories.
+GitHub is a platform that:
 
-👉 It allows:
+* Stores Git repositories online
+* Enables collaboration
+* Allows pushing and pulling code
 
-* Remote storage
-* Collaboration
-* Code sharing
-* Version syncing
-
-📖 From CS50:
-A repository is a **project folder stored locally or remotely** 
+👉 A repository is:
+A folder that contains all files of a project (local or remote) 
 
 ---
 
-# ⚙️ 3. Git Workflow (CORE)
+# ⚙️ 3. Git Workflow
 
+```bash id="c4d0m3"
+Working Directory → Staging Area → Repository
 ```
-Working Directory → Staging Area → Local Repository → Remote Repository
+
+## Commands:
+
+```bash id="f3s8m0"
+git add <file>
+git commit -m "message"
+git push origin <branch>
 ```
 
-### Example:
+---
 
-```bash
+# 🧾 4. Basic Commands
+
+## Initialize Repository
+
+```bash id="psr3e1"
+git init
+```
+
+## Add Files
+
+```bash id="8v06kj"
+git add <file_name>
 git add .
-git commit -m "Added feature"
-git push origin main
 ```
 
----
+## Commit Changes
 
-# 🔄 4. How Git Works (REAL UNDERSTANDING)
-
-Git follows 3 main steps:
-
-| Step   | Command    | Meaning          |
-| ------ | ---------- | ---------------- |
-| Add    | git add    | Select files     |
-| Commit | git commit | Save snapshot    |
-| Push   | git push   | Upload to GitHub |
-
-📖 From CS50:
-
-* `git add` → select files
-* `git commit` → save snapshot
-* `git push` → upload changes 
-
----
-
-# 🧾 5. Important Git Commands
-
-## 🔹 Clone Repository
-
-```bash
-git clone <repo-url>
+```bash id="8a8rmh"
+git commit -m "initial commit"
 ```
 
-👉 Downloads project from GitHub
+## Check Status
 
----
-
-## 🔹 Check Status
-
-```bash
+```bash id="0b3q3x"
 git status
 ```
 
-👉 Shows current changes
+## View History
 
----
-
-## 🔹 Add Files
-
-```bash
-git add file.txt
-git add .
-```
-
----
-
-## 🔹 Commit Changes
-
-```bash
-git commit -m "Added login feature"
-```
-
-👉 Saves snapshot
-
----
-
-## 🔹 Push Changes
-
-```bash
-git push origin main
-```
-
-👉 Uploads to GitHub
-
----
-
-## 🔹 Pull Changes
-
-```bash
-git pull origin main
-```
-
-👉 Downloads latest code
-
-📖 From CS50:
-
-* Push → upload changes
-* Pull → download updates from others 
-
----
-
-# 🌿 6. Branching (VERY IMPORTANT)
-
-Branch = Separate version of code
-
-👉 Used to:
-
-* Develop features
-* Fix bugs safely
-
-📖 From CS50:
-Branching lets us **work on features without affecting main code** 
-
----
-
-## 🔹 Create Branch
-
-```bash
-git checkout -b feature-login
-```
-
-## 🔹 Switch Branch
-
-```bash
-git checkout main
-```
-
----
-
-# 🔀 7. Merging
-
-```bash
-git checkout main
-git merge feature-login
-```
-
-👉 Combines feature into main
-
----
-
-# ⚠️ 8. Merge Conflict (IMPORTANT)
-
-Occurs when:
-👉 Same line edited differently
-
-Example:
-
-```bash
-<<<<<<< HEAD
-int a = 10;
-=======
-int a = 20;
->>>>>>> branch
-```
-
-📖 From CS50:
-You must manually **choose or combine changes** 
-
----
-
-# 🔁 9. Push vs Pull (INTERVIEW QUESTION)
-
-| Command  | Meaning            |
-| -------- | ------------------ |
-| git push | Upload changes     |
-| git pull | Get latest changes |
-
----
-
-# 🔍 10. Git Log
-
-```bash
+```bash id="ghw0rf"
 git log
 ```
 
-👉 Shows:
-
-* Commit history
-* Author
-* Date
-* Changes
-
 ---
 
-# 🔄 11. Undo Changes
+# 🌍 5. Working with Remote Repositories
 
-## Reset to previous commit
+## Clone Repository
 
-```bash
-git reset --hard <commit-id>
+```bash id="m6m2we"
+git clone <repository_url>
 ```
 
-## Reset to GitHub version
+## Push Changes
 
-```bash
-git reset --hard origin/main
+```bash id="8t3csh"
+git push origin <branch_name>
 ```
 
-📖 From CS50:
-Git allows reverting to **previous snapshots easily** 
+## Pull Changes
+
+```bash id="s9sz1y"
+git pull origin <branch_name>
+```
+
+👉 Used to sync between local and remote repositories 
 
 ---
 
-# 🌍 12. GitHub Features
+# 🌿 6. Branching & Merging
 
-## 🔹 Fork
+## Create Branch
 
-👉 Copy someone else's repo
+```bash id="dcnwzm"
+git branch <branch_name>
+```
 
-## 🔹 Pull Request
+## Switch Branch
 
-👉 Request to merge your changes
+```bash id="r6bm2y"
+git checkout <branch_name>
+```
 
-## 🔹 GitHub Pages
+## Create & Switch
 
-👉 Host websites for free
+```bash id="2lfmyd"
+git checkout -b <branch_name>
+```
+
+## Merge Branch
+
+```bash id="d3h3q7"
+git merge <branch_name>
+```
+
+## Delete Branch
+
+```bash id="9t6xcl"
+git branch -d <branch_name>
+```
+
+👉 Branching allows working on new features without affecting main code 
 
 ---
 
-# 🔍 13. Real Workflow (PROJECT)
+# ⚠️ 7. Merge Conflicts
 
-```bash
-git clone <repo>
-cd repo
+Occurs when:
 
-git checkout -b feature-auth
+* Two changes conflict in same file
 
-# make changes
+## Resolution:
 
-git add .
-git commit -m "Added authentication"
+```bash id="2e7h3g"
+git add <resolved_file>
+git commit -m "Resolved conflict"
+```
 
-git push origin feature-auth
+👉 Must be resolved manually 
 
-git checkout main
-git merge feature-auth
+---
+
+# 🔄 8. Undo Changes
+
+## Undo Last Commit (keep changes)
+
+```bash id="dx1b0x"
+git reset --soft HEAD~1
+```
+
+## Undo Last Commit (delete changes)
+
+```bash id="7ix3u7"
+git reset --hard HEAD~1
+```
+
+## Discard Changes
+
+```bash id="6umz4j"
+git checkout -- <file_name>
 ```
 
 ---
 
-# 🧠 14. Best Practices
+# 🚀 9. Advanced Git
 
-✅ Write clear commit messages
-✅ Pull before push
-✅ Use branches
-✅ Keep commits small
-✅ Avoid conflicts
+## Stash Changes
 
----
-
-# 🎯 15. Why Git is Important
-
-* Industry standard tool
-* Used in all software companies
-* Essential for teamwork
-* Enables large project management
-
----
-
-# 📁 16. Repository Structure
-
+```bash id="l4u6m3"
+git stash
+git stash pop
 ```
-basics/
-branching/
-practice/
+
+## Rebase
+
+```bash id="0g9gkq"
+git rebase main
+```
+
+## Cherry Pick
+
+```bash id="q2hkgv"
+git cherry-pick <commit_hash>
+```
+
+## Tagging
+
+```bash id="5m6h7z"
+git tag -a v1.0 -m "version 1.0"
+git push --tags
+```
+
+## Amend Commit
+
+```bash id="1c3e6h"
+git commit --amend -m "new message"
+```
+
+---
+
+# 🧹 10. Cleaning Repository
+
+## Remove untracked files
+
+```bash id="1g1y7c"
+git clean -f
+```
+
+## Remove directories
+
+```bash id="h9h1bz"
+git clean -fd
+```
+
+---
+
+# 🧠 11. Best Practices
+
+* Write meaningful commit messages
+* Commit frequently
+* Keep branches small
+* Sync regularly with main branch 
+
+---
+
+# 🔧 12. Expert Commands
+
+## Interactive Rebase
+
+```bash id="8fdwz8"
+git rebase -i HEAD~3
+```
+
+## Submodules
+
+```bash id="t9z5sj"
+git submodule add <repo_url>
+git submodule update --init --recursive
+```
+
+## Bisect
+
+```bash id="8l2kfx"
+git bisect start
+git bisect bad
+git bisect good <commit_hash>
+```
+
+## Aliases
+
+```bash id="g9z5z9"
+git config --global alias.st status
 ```
 
 ---
 
 # 💼 Author
 
-**Pujitha Reddy**
-
----
-
-⭐ Star this repo if you find it useful!
+Pujitha Reddy
